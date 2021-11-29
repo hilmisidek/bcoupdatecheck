@@ -7,7 +7,8 @@ To use this script you need:
 1. Python
 2. Selenium
 3. Pandas
-4. webdriver (in this case chrome)
+4. Openpyxl
+5. webdriver (in this case chrome)
 
 init.xlsx is where you put each product url
 
@@ -18,3 +19,5 @@ output281121.xlsx is the output of the updates
 bco.pcy is the script
 
 I don't know how to get this script into executable, used py-to-exe but it was failed. 
+
+In case no such element occured on login phase. comment line 40 

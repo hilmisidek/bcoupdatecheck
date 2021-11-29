@@ -13,7 +13,7 @@ from datetime import date
 stokCount = pd.Series([],dtype=pd.StringDtype()) #initialize panda series
 priceCatch = pd.Series([],dtype=pd.StringDtype())
 #read excel file put into data object
-data = pd.read_excel (r'D:\pythone selenium\init.xlsx') #place "r" before the path string to address special character, such as '\'. Don't forget to put the file name at the end of the path + '.xlsx'
+data = pd.read_excel (r'init.xlsx') #place "r" before the path string to address special character, such as '\'. Don't forget to put the file name at the end of the path + '.xlsx'
 
 df = pd.DataFrame(data) #put into dataframe
 df_array=df['url'].values.tolist() #read column url put into array
@@ -37,7 +37,7 @@ formUsr=browser.find_element(By.ID,"login_main_login")
 formUsr.send_keys(cred[0])
 formPass=browser.find_element(By.ID,"psw_main_login")
 formPass.send_keys(cred[1])
-browser.find_element(By.CSS_SELECTOR,".buttons-container:nth-child(5) .ty-btn__login").click()
+#browser.find_element(By.CSS_SELECTOR,".buttons-container:nth-child(5) .ty-btn__login").click()
 #addUrl=["https://bco.com.my/150-ungkapan-mudah-bahasa-mandarin/","https://bco.com.my/the-richest-man-in-babylon/"]
 #f=open("scrape.txt","a+")
 count=0

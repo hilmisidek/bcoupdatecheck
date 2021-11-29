@@ -20,4 +20,6 @@ bco.pcy is the script
 
 I don't know how to get this script into executable, used py-to-exe but it was failed. 
 
-In case no such element occured on login phase. comment line 40 
+In case no such element erro occured on login phase. comment line 40. 
+Working fne on chrome 97 but seems giving this error on version 96. Seems like after inserting password it
+get logged on automatically without clicking on the login button

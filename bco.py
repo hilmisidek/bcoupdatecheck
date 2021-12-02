@@ -2,7 +2,7 @@
 """
 Created on Thu Nov 25 21:47:54 2021
 
-@author: mij_a
+@author: hilmisidek@hotmail.com
 """
 import pandas as pd
 from selenium import webdriver
@@ -42,22 +42,31 @@ formPass.send_keys(cred[1])
 #f=open("scrape.txt","a+")
 count=0
 for address in df_array: #check url one by one 
-    browser.get(address)
-    harga=browser.find_element(By.XPATH,"//span[2]/span/bdi/span[2]").text
-    stok=browser.find_element(By.XPATH,"//div[starts-with(@id,'product_amount_update_')]").text
-    stok_split=stok.split(":",2) #split ready stock: xxxx
-    stok_split_after_split=stok_split[1].split(" ",2) #split xx pieces
-    stok_before_final=stok_split_after_split[0].lstrip("\n") #it capture \n just remove it
-    stok_final=stok_before_final #just to make it work
-    stokCount[count]=stok_final    #update stock item by item
-    priceCatch[count]=harga
-    count+=1 #identifier
+    try:
+        browser.get(address)
+        harga=browser.find_element(By.XPATH,"//span[2]/span/bdi/span[2]").text
+        stok=browser.find_element(By.XPATH,"//div[starts-with(@id,'product_amount_update_')]").text
+        stok_split=stok.split(":",2) #split ready stock: xxxx
+        stok_split_after_split=stok_split[1].split(" ",2) #split xx pieces
+        stok_before_final=stok_split_after_split[0].lstrip("\n") #it capture \n just remove it
+        stok_final=stok_before_final #just to make it work
+        stokCount[count]=stok_final    #update stock item by item
+        priceCatch[count]=harga
+   # count+=1 #identifier
  #   print ("Title:")
-    print (browser.title)
-    print ("Price:")
-    print (harga)
-    print ("Stock:")
-    print (stok_final)
+        print (browser.title)
+        print ("Price:")
+        print (harga)
+        print ("Stock:")
+        print (stok_final)
+    except Exception as e:
+        print (f"URL {address} got problem") #tell the error
+        stokCount[count]="check"
+        priceCatch[count] = "check"
+        print(e)
+    finally :
+        count += 1
+
 data.insert(1, "stok", stokCount) #insert into dataframe column 1 start from 0 eh
 data.insert(2, "harga", priceCatch) #insert into dataframe column 2
 dateNow=date.today() #get date for today

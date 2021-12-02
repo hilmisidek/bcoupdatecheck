@@ -1,6 +1,16 @@
 # bcoupdatecheck
 check updates on stock and price for bco dropshipper
 
+02-Dec-2021 : 
+EXE file created. You can try to run the file but be sure to put all related files in the same directory
+
+1. bco.exe
+2. init.xlsx
+3. cred.txt
+4. chromedriver.exe
+
+If cannot run, use the python source code and read below:
+
 This script is tested working on windows 10 machine
 
 To use this script you need:

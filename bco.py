@@ -74,4 +74,4 @@ dateStr=dateNow.strftime("%d%m%y") #convert into string with formatting
 outputfile="output" + dateStr +".xlsx" #filename final, don't forget .xslx
 print(outputfile) #to make sure filename is good, can remove
 data.to_excel(outputfile, index=False) #write to excel file
-print (data) # to display final dataset
+print(data) # to display final dataset

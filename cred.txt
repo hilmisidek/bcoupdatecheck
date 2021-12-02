@@ -1,2 +1,7 @@
+<<<<<<< HEAD:bco/cred.txt
+zalikamari@gmail.com
+gec2kj3YU4Rc762
+=======
 username here
 password here
+>>>>>>> origin/main:cred.txt

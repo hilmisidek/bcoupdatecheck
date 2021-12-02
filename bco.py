@@ -75,7 +75,7 @@ def main():
     for address in df_array:  # check url one by one
         try:
             browser.get(address)
-            harga = browser.find_element(By.XPATH, "//span[2]/span/bdi/span[2]").text
+            harga = browser.find_element(By.XPATH, "//span[starts-with(@id,'sec_discounted_price_')]").text
             stok = browser.find_element(By.XPATH, "//div[starts-with(@id,'product_amount_update_')]").text
             stok_final=get_stock(stok)
             stokCount[count] = stok_final  # update stock item by item

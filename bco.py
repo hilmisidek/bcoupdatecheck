@@ -7,8 +7,11 @@ Created on Thu Nov 25 21:47:54 2021
 
 import pandas as pd
 from selenium import webdriver
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from datetime import date
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 def credential():
@@ -25,12 +28,19 @@ def login_main(browser):
     browser.get('https://bco.com.my')  # the url
     clickSign = browser.find_element(By.LINK_TEXT, "Sign In")
     clickSign.click()
-    formUsr = browser.find_element(By.ID, "login_main_login")
     cred = credential()
+    formUsr = browser.find_element(By.ID, "login_main_login")
     formUsr.send_keys(cred[0])
     formPass = browser.find_element(By.ID, "psw_main_login")
     formPass.send_keys(cred[1])
-
+    formPass.send_keys(Keys.ENTER) #send enter key after password. Sign in button not interactable error
+    #buttonSign= browser.find_element(By.XPATH, "//button[contains(@name, 'dispatch[auth.login]')]")
+    #buttonSign.click()
+    #browser.execute_script("arguments[0].click();", buttonSign)
+    #wait until complete sign in
+    element = WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.LINK_TEXT, "Sign out")))
+    #then return
+    return browser
 
 
 def file_naming():
@@ -70,7 +80,7 @@ def main():
     df_array=pre_process(data)
     count = 0
 
-    login_main(browser)
+    browser=login_main(browser)
 
     for address in df_array:  # check url one by one
         try:
@@ -93,7 +103,7 @@ def main():
         finally:
             count += 1
     post_process(data, stokCount, priceCatch)
-
+    input("Checking complete. Press y and hit Enter to exit\n")
 
 if __name__ == "__main__":
     main()

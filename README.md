@@ -7,7 +7,7 @@ EXE file created. You can try to run the file but be sure to put all related fil
 1. bco.exe
 2. init.xlsx
 3. cred.txt
-4. chromedriver.exe
+4. chromedriver.exe (always check for latest driver)
 
 If cannot run, use the python source code and read below:
 
